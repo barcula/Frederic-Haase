@@ -9,40 +9,40 @@ for path in image_names:
 npoints = 20 #Number of dabs
 fleckx = []  # position der ellipsen horizontal
 flecky = []  # position der ellipsen vertikal
-a = []#halbachsen ellipsen horizontal
-b = []#halbachsen ellipsen vertikal
-punktex = []  # position der schwarzen flecken horizontal
-punktey = []  # position der schwarzen flecken vertikal
+a = []#semiaxis  ellipses horizontal
+b = []#semiaxis  ellipses vertikal
+punktex = []  # position of black dots horizontal
+punktey = []  # position of black dots vertikal
 for i in range(0, npoints):
-    # es wird gewürfelt in welchem abstand c vom ellipsenmittelpunkt die lila flecken gemalt werden sollen
+    #  distance "c" from the center of the ellipse blue dabs are drawn
     c = random(50,70)
-    # die größe "d" der schwarzen punkte wird gewüfelt
+    # size "d" of black dots
     d = random(15,23)
 
-    # horizontale position der ellipsen wird gewürfelt
+    # horizontal position of ellipse 
     fleckx.append(random(width))
-    # vertikale position der ellipsen wird gewürfelt
+    # vertical position of ellipse 
     flecky.append(random(height))
  
-    # horizontale halbachse der ellipsen wird gewürfelt
+    # horizontal semiaxis of ellipses 
     a.append(random(40, 50))
-    # vertikale halbachse der ellipsen wird gewürfelt
+    # vertical semiaxis of ellipses 
     b.append(random(40, 50))
 
     strokeWeight(0.2)
     noFill()
-    # ellipsen werden gezeichnet
+    # ellipse are drawn
     ellipse(fleckx[i], flecky[i], 2 * a[i], 2 * b[i])
 
-    # hier wird eines der beiden lila fleckmuster ausgewählt und dann in bezug zum ellipsenmittelpunkt gemahlt, immer rechts untendrunter, warum auch immer. 
+    # choose of images.Blue dabs are drawn concerning to the center of the ellipse 
     img = image(images[int(random(0, len(images)))],
                 fleckx[i], flecky[i], c, c)
     
-    # hier wird eine horizontale position für den schwarzen fleck gewürfelt,
-    # erlaubt sind werte zwischen ellipsenposition fleckx - ellipsenbreite a bis ellipsenposition fleckx + ellipsenbreite a
+    # position of black dots horizontal,
+    # range between ellipseposition fleckx - ellipsewidth a unto ellipseposition fleckx + ellipsewidth a
     punktex.append(random(fleckx[i] - a[i], fleckx[i] + a[i]))
     
-    # mit if wird nun entschieden ob man die obere oder die untere hälfte der ellipse als vertikale positionsmöglichkeit für den schwarzen fleck wählt
+    # if question ; wich of two posibilities is choosen for black dots
     # danach wird y dem zu x entsprechenden wert auf der oberen oder unteren hälfte der ellipse zugewiesen
     # y erhält man aus der ellipsengleichung x^2/a^2 + y^2/b^2 = 1, wobei man fleckx und flecky als referenzpunkt wählt, daher auch "+flecky[i]" und "punktex[i]-fleckx[i]"
     # die zwei zeilen in if / else unterscheiden sich auch nur durch ein minus. 
