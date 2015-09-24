@@ -43,9 +43,9 @@ for i in range(0, npoints):
     punktex.append(random(fleckx[i] - a[i], fleckx[i] + a[i]))
     
     # if question ; wich of two posibilities is choosen for black dots
-    # danach wird y dem zu x entsprechenden wert auf der oberen oder unteren hälfte der ellipse zugewiesen
-    # y erhält man aus der ellipsengleichung x^2/a^2 + y^2/b^2 = 1, wobei man fleckx und flecky als referenzpunkt wählt, daher auch "+flecky[i]" und "punktex[i]-fleckx[i]"
-    # die zwei zeilen in if / else unterscheiden sich auch nur durch ein minus. 
+    # y is asigned to mathematical value of x 
+    # y is the result from x^2/a^2 + y^2/b^2 = 1
+   
     if (int(random(0, 2)) == 1):
         punktey.append((b[i] ** 2 - (b[i] ** 2 / a[i] ** 2)
                         * (punktex[i] - fleckx[i]) ** 2) ** 0.5 + flecky[i])
@@ -56,7 +56,7 @@ for i in range(0, npoints):
     fill(random(0))                        
     ellipse(punktex[i], punktey[i], d, d)
 
-    #hier werden nun alle der schwarzen flecken nacheinander mit einer linie verbunden, geht nur falls es mehr als einen fleck gibt, daher i>0
+    #black dots are connected with a line
     if (i > 0):
         strokeWeight(1.5) 
         color(250)
