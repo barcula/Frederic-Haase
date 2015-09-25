@@ -1,3 +1,4 @@
+![](Images/headerdigital.jpg)
 # Conceptual formulation
 
 The next steps was it to create a digital version of our analogue algorithm. 
